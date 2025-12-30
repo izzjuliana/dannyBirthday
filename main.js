@@ -4,7 +4,14 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
 
 const a1 = new Audio('./happy-birthday-155461.mp3');
+a1.loop = true; 
 a1.play();
+
+a1.play().catch(() => {
+  document.body.addEventListener('click', () => {
+    a1.play();
+  }, { once: true });
+});
 
 const scene = new THREE.Scene();
 const loader = new GLTFLoader();
